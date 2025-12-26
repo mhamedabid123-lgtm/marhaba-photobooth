@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marhaba Palace Photo Booth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page-bg"></div>
+
+  <div class="container">
+    <header class="header">
+      <div class="topbar">
+        <div></div>
+
+        <div class="brand">
+          <div class="hotel-title">
+            <h1>Marhaba Palace</h1>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="header-subtitle" id="subtitle">Capture Your Moment</div>
+        </div>
+
+        <div class="lang">
+          <label class="lang-label" id="langLabel" for="langSelect">Language</label>
+          <select id="langSelect">
+            <option value="fr">FR</option>
+            <option value="en" selected>EN</option>
+            <option value="ar">AR</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- Left -->
+      <div class="themes themes-left">
+        <div class="themes-title" id="bgTitleLeft">Backgrounds</div>
+
+        <div class="theme-item selected" data-theme="bg_vue">
+          <div class="theme-thumb"><img src="backgrounds/bg_vue.jpg" alt="Sea view" /></div>
+          <span data-i18n="theme_seaview">Sea View</span>
+        </div>
+
+        <div class="theme-item" data-theme="bg-noel">
+          <div class="theme-thumb"><img src="backgrounds/bg-noel.jpg" alt="Christmas" /></div>
+          <span data-i18n="theme_christmas">Christmas</span>
+        </div>
+
+        <div class="theme-item" data-theme="bg-anniversaire">
+          <div class="theme-thumb"><img src="backgrounds/bg-anniversaire.jpg" alt="Birthday" /></div>
+          <span data-i18n="theme_birthday">Birthday</span>
+        </div>
+      </div>
+
+      <!-- Center -->
+      <div class="center">
+        <div class="frame">
+          <div class="frame-inner">
+            <div class="camera-section" id="cameraSection">
+              <video id="video" autoplay playsinline></video>
+            </div>
+
+            <div id="photoSection" class="photo-section" style="display:none;">
+              <canvas id="canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button id="startCamera">Start Camera</button>
+          <button id="capture" disabled>Take Photo</button>
+          <button id="download" style="display:none;">Download</button>
+          <button id="retake" style="display:none;">Retake</button>
+        </div>
+
+        <!-- ✅ QR PANEL -->
+        <div id="qrPanel" class="qr-panel" style="display:none;">
+          <div class="qr-title" id="qrTitle">Scan to download on your phone</div>
+          <div class="qr-wrap">
+            <canvas id="qrCanvas" width="220" height="220"></canvas>
+          </div>
+          <div class="qr-hint" id="qrHint">Open your camera and scan the QR.</div>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="themes themes-right">
+        <div class="themes-title" id="bgTitleRight">Backgrounds</div>
+
+        <div class="theme-item" data-theme="bg-luxe">
+          <div class="theme-thumb"><img src="backgrounds/bg-luxe.jpg" alt="Luxury" /></div>
+          <span data-i18n="theme_luxury">Luxury</span>
+        </div>
+
+        <div class="theme-item" data-theme="bg-plage">
+          <div class="theme-thumb"><img src="backgrounds/bg-plage.jpg" alt="Beach" /></div>
+          <span data-i18n="theme_beach">Beach</span>
+        </div>
+
+        <div class="theme-item" data-theme="bg-romantique">
+          <div class="theme-thumb"><img src="backgrounds/bg-romantique.jpg" alt="Romantic" /></div>
+          <span data-i18n="theme_romantic">Romantic</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" id="footerText">
+      Smile, your Marhaba Palace memory is ready.
+    </footer>
+  </div>
+
+  <!-- logo used in canvas -->
+  <img id="hotelLogo" src="logo.png" alt="Hotel Logo" style="display:none;" />
+
+  <!-- MediaPipe Selfie Segmentation -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+  <!-- QR Code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
